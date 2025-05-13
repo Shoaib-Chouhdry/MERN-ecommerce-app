@@ -111,10 +111,10 @@
 
 // export default ShoppingCheckout;
 import React, { useContext } from "react";
-import { CartContext } from "@/components/shoppingView/CardContext";
+import { CartContext } from "../../components/shoppingView/CardContext";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { placeOrder } from "@/store/shopSlice/OrderSlice";
+import { placeOrder } from "../../store/shopSlice/OrderSlice";
 
 const CheckOut = () => {
   const { cartItems, removeItem } = useContext(CartContext);

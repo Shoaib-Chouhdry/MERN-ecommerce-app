@@ -8,7 +8,10 @@ import AdminProductRoute from "./routes/adminRoute/ProductRoute.js"
 import ShopProductRoute from "./routes/shopRoute/ShopProductRoute.js"
 import ShopCardRoute from "./routes/shopRoute//ShopCardRoute.js"
 import OrderRoute from "./routes/shopRoute//OrderRoute.js"
+import path from "path"
 
+
+const _dirname = path.resolve();
 
 
 
@@ -45,6 +48,12 @@ app.use("/api/admin/product",AdminProductRoute)
 app.use("/api/shop/product",ShopProductRoute)
 app.use("/api/shop/card",ShopCardRoute)
 app.use("/api/card",OrderRoute)
+
+
+app.use(express.static(path.join(_dirname,'/frontend/dist')))
+app.get('*',(_,res) => {
+    res.sendFile(path.resolve(_dirname,'frontend','dist','index.html'));
+})
 
 app.listen(PORT,()=>{
     console.log(`server is running on ${PORT}`)
